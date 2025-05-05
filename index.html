@@ -6,6 +6,9 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <title>Typing Effect - VeryGreat</title>
+
+    <!-- Google Fonts Preconnect -->
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -15,208 +18,25 @@
       href="https://fonts.gstatic.com"
       crossorigin
     />
+
+    <!-- Google Fonts Stylesheet -->
     <link
       href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Codystar:wght@300;400&family=Cute+Font&family=DotGothic16&family=Doto:wght@100..900&family=Faster+One&family=Hachi+Maru+Pop&family=Jersey+10&family=Jolly+Lodger&family=Long+Cang&family=Micro+5&family=Monofett&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Nabla&family=Nosifer&family=Permanent+Marker&family=Pixelify+Sans:wght@400..700&family=Pompiere&family=Press+Start+2P&family=Raleway+Dots&family=Rampart+One&family=Ranchers&family=Rock+3D&family=Rock+Salt&family=Rubik+Doodle+Shadow&family=Rubik+Glitch&family=Rubik+Mono+One&family=Rubik+Vinyl&family=Rubik+Wet+Paint&family=Rye&family=Sedgwick+Ave+Display&family=Shizuru&family=Silkscreen:wght@400;700&family=Sixtyfour&family=Swanky+and+Moo+Moo&family=Tiny5&family=Truculenta:opsz,wght@12..72,100..900&family=Underdog&family=VT323&family=Waiting+for+the+Sunrise&family=Workbench&family=Yuji+Boku&family=Zeyada&display=swap"
       rel="stylesheet"
     />
-    <title>VeryGreat Scrolling Fonts</title>
-    <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden; /* Prevent body scrollbars */
-        background-color: #222; /* Dark background */
-        color: #eee; /* Light text color */
-      }
 
-      #scrolling-container {
-        height: 100vh;
-        overflow: hidden; /* Hide content outside the viewport */
-        position: relative; /* Needed for absolute positioning of children if required */
-      }
-
-      #font-list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* Animation will be applied via JS after height calculation */
-        position: absolute;
-        width: 100%;
-        bottom: 0; /* Start animation from bottom */
-      }
-
-      .font-item {
-        font-size: 8vw; /* Adjust size as needed */
-        font-weight: bold;
-        text-align: center;
-        padding: 2vh 0; /* Add some vertical spacing */
-        width: 100%;
-        opacity: 0; /* Start hidden */
-        transition: opacity 0.5s ease-in-out; /* Fade transition */
-      }
-
-      .font-item.visible {
-        opacity: 1; /* Fade in */
-      }
-
-      /* Define scroll animation dynamically in JS */
-      /* @keyframes scroll-up {
-        from { transform: translateY(0); }
-        to { transform: translateY(-100%); }
-      } */
-    </style>
+    <!-- Link to local CSS -->
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
   </head>
   <body>
-    <div id="scrolling-container">
-      <div id="font-list">
-        <!-- Font items will be added here by JS -->
-      </div>
+    <div id="text-container">
+      <span id="typing-text"></span>
     </div>
-
-    <script>
-      const fonts = [
-        'Bungee Shade',
-        'Codystar',
-        'Cute Font',
-        'DotGothic16',
-        'Doto',
-        'Faster One',
-        'Hachi Maru Pop',
-        'Jersey 10',
-        'Jolly Lodger',
-        'Long Cang',
-        'Micro 5',
-        'Monofett',
-        'MuseoModerno',
-        'Nabla',
-        'Nosifer',
-        'Permanent Marker',
-        'Pixelify Sans',
-        'Pompiere',
-        'Press Start 2P',
-        'Raleway Dots',
-        'Rampart One',
-        'Ranchers',
-        'Rock 3D',
-        'Rock Salt',
-        'Rubik Doodle Shadow',
-        'Rubik Glitch',
-        'Rubik Mono One',
-        'Rubik Vinyl',
-        'Rubik Wet Paint',
-        'Rye',
-        'Sedgwick Ave Display',
-        'Shizuru',
-        'Silkscreen',
-        'Sixtyfour',
-        'Swanky and Moo Moo',
-        'Tiny5',
-        'Truculenta',
-        'Underdog',
-        'VT323',
-        'Waiting for the Sunrise',
-        'Workbench',
-        'Yuji Boku',
-        'Zeyada',
-      ];
-
-      const fontListElement = document.getElementById('font-list');
-      const scrollingContainer = document.getElementById('scrolling-container');
-
-      // Populate the list
-      fonts.forEach((font) => {
-        const item = document.createElement('div');
-        item.classList.add('font-item');
-        item.innerText = 'VeryGreat';
-        // Add quotes around font names with spaces for CSS
-        const fontName = font.includes(' ') ? `'${font}'` : font;
-        item.style.fontFamily = `${fontName}, sans-serif`; // Add fallback
-        fontListElement.appendChild(item);
-      });
-
-      // --- Intersection Observer for fade effects ---
-      const observerOptions = {
-        root: scrollingContainer, // Observe within the container
-        rootMargin: '0px',
-        threshold: 0.1, // Trigger when 10% visible
-      };
-
-      const observerCallback = (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          } else {
-            entry.target.classList.remove('visible');
-          }
-        });
-      };
-
-      const observer = new IntersectionObserver(
-        observerCallback,
-        observerOptions
-      );
-
-      // Observe each font item
-      fontListElement.querySelectorAll('.font-item').forEach((item) => {
-        observer.observe(item);
-      });
-
-      // --- Scrolling Animation ---
-      // Wait for layout to calculate the height
-      requestAnimationFrame(() => {
-        const listHeight = fontListElement.offsetHeight;
-        const containerHeight = scrollingContainer.offsetHeight;
-
-        // Only animate if list is taller than container
-        if (listHeight > containerHeight) {
-          // Calculate duration based on height to maintain constant speed
-          // Adjust speed factor (e.g., 50 pixels per second)
-          const scrollSpeedFactor = 50; // pixels per second
-          const duration = listHeight / scrollSpeedFactor; // seconds
-
-          // To make it loop smoothly, duplicate the content
-          fontListElement.innerHTML += fontListElement.innerHTML;
-          // Re-observe duplicated items
-          fontListElement.querySelectorAll('.font-item').forEach((item) => {
-            observer.observe(item);
-          });
-
-          const totalHeight = fontListElement.offsetHeight; // New total height after duplication
-
-          // Dynamically create and inject the keyframes
-          const keyframesString = `@keyframes scroll-up {
-                  0% { transform: translateY(0); }
-                  100% { transform: translateY(-${
-                    totalHeight / 2
-                  }px); } /* Scroll exactly half the duplicated height */
-              }`;
-
-          // Create a new <style> element for the keyframes
-          const styleElement = document.createElement('style');
-          styleElement.textContent = keyframesString;
-          document.head.appendChild(styleElement);
-
-          // Apply animation to the list
-          fontListElement.style.animation = `scroll-up ${
-            duration * 2
-          }s linear infinite`; // Multiply duration by 2 for duplicated content
-          // Ensure it starts positioned correctly for animation
-          fontListElement.style.bottom = 'auto';
-          fontListElement.style.top = '0';
-        } else {
-          // If content fits, just center it vertically (optional)
-          fontListElement.style.position = 'static'; // Reset positioning
-          scrollingContainer.style.display = 'flex';
-          scrollingContainer.style.alignItems = 'center';
-          scrollingContainer.style.justifyContent = 'center';
-          // Ensure all items are visible if not scrolling
-          fontListElement
-            .querySelectorAll('.font-item')
-            .forEach((item) => item.classList.add('visible'));
-        }
-      });
-    </script>
+    <span id="copyright"></span>
+    <!-- Link to local JavaScript -->
+    <script src="script.js"></script>
   </body>
 </html>
