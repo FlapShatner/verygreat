@@ -39,7 +39,8 @@ body {
 }
 
 #copyright {
-  font-size: 1.5vw;
+  font-family: 'Rubik Doodle Shadow';
+  font-size: 1rem;
   font-weight: bold;
   color: #ccc;
   position: absolute;

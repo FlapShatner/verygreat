@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('Hi there');
   const copyrightElement = document.getElementById('copyright');
   const currentYear = new Date().getFullYear();
   copyrightElement.textContent = `© ${currentYear} Jordan Roberts`;
