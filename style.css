@@ -6,27 +6,57 @@
 }
 
 body {
-  min-height: 100vh; /* Full viewport height */
+  min-height: 100vh;
+  /* Full viewport height */
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  background-color: #2a2a2a; /* Dark gray background, not pure black */
-  color: #f0f0f0; /* Light text color for contrast */
-  overflow: hidden; /* Prevent scrollbars if text somehow overflows */
-  font-family: sans-serif; /* Default fallback font */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  background-color: #2a2a2a;
+  background-image: url('/textures/otis.png');
+  background-blend-mode: soft-light;
+  /* Dark gray background, not pure black */
+  color: #f0f0f0;
+  /* Light text color for contrast */
+  overflow: hidden;
+  /* Prevent scrollbars if text somehow overflows */
+  font-family: sans-serif;
+  /* Default fallback font */
+
 }
+
+/* img {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  filter: opacity(.8);
+} */
+/* 
+#texture {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('grain.png');
+  background-blend-mode: lighten;
+} */
 
 #text-container {
   text-align: center;
 }
 
 #typing-text {
-  font-size: 12vw; /* Responsive large font size based on viewport width */
+  font-size: 12vw;
+  /* Responsive large font size based on viewport width */
   font-weight: bold;
-  white-space: nowrap; /* Keep text on one line */
-  display: inline-block; /* Needed for potential width calculations if added */
-  min-height: 1.2em; /* Prevent collapsing when empty, reduce layout shift */
-  transition: font-family 0.3s ease-in-out; /* Smooth font transition */
+  white-space: nowrap;
+  /* Keep text on one line */
+  display: inline-block;
+  /* Needed for potential width calculations if added */
+  min-height: 1.2em;
+  /* Prevent collapsing when empty, reduce layout shift */
+  transition: font-family 0.3s ease-in-out;
+  /* Smooth font transition */
 }
 
 /* Add a blinking cursor effect (optional but nice) */
@@ -35,7 +65,8 @@ body {
   display: inline-block;
   animation: blink 0.7s infinite;
   opacity: 1;
-  color: #ccc; /* Cursor color */
+  color: #ccc;
+  /* Cursor color */
 }
 
 #copyright {
@@ -51,10 +82,12 @@ body {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -64,4 +97,34 @@ body {
 #typing-text.paused::after {
   opacity: 0;
   animation: none;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gradient {
+  --size: 750px;
+  --speed: 50s;
+  --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  filter: blur(calc(var(--size) / 5));
+  background-image: linear-gradient(#4377ef, #7befd0);
+  animation: rotate var(--speed) var(--easing) alternate infinite;
+  border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+  z-index: -1;
+}
+
+@media (min-width: 720px) {
+  .gradient {
+    --size: 500px;
+  }
 }
