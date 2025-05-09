@@ -96,7 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
  console.log('Hi there')
+ const logo = document.getElementById('logo')
  const copyrightElement = document.getElementById('copyright')
  const currentYear = new Date().getFullYear()
- copyrightElement.textContent = `© ${currentYear} Jordan Roberts`
+ copyrightElement.textContent = `© ${currentYear} `
+ logo.addEventListener('click', () => {
+  logo.classList.add('dropAndSwing')
+ })
 })
