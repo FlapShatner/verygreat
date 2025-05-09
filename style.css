@@ -7,39 +7,17 @@
 
 body {
   min-height: 100vh;
-  /* Full viewport height */
   display: flex;
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   background-color: #2a2a2a;
-  background-image: url('/textures/otis.png');
+  background-image: url('/textures/sand.png');
   background-blend-mode: soft-light;
-  /* Dark gray background, not pure black */
   color: #f0f0f0;
-  /* Light text color for contrast */
   overflow: hidden;
-  /* Prevent scrollbars if text somehow overflows */
   font-family: sans-serif;
-  /* Default fallback font */
 
 }
-
-/* img {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  filter: opacity(.8);
-} */
-/* 
-#texture {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('grain.png');
-  background-blend-mode: lighten;
-} */
 
 #text-container {
   text-align: center;
@@ -47,26 +25,19 @@ body {
 
 #typing-text {
   font-size: 12vw;
-  /* Responsive large font size based on viewport width */
   font-weight: bold;
   white-space: nowrap;
-  /* Keep text on one line */
   display: inline-block;
-  /* Needed for potential width calculations if added */
   min-height: 1.2em;
-  /* Prevent collapsing when empty, reduce layout shift */
   transition: font-family 0.3s ease-in-out;
-  /* Smooth font transition */
 }
 
-/* Add a blinking cursor effect (optional but nice) */
 #typing-text::after {
   content: '|';
   display: inline-block;
   animation: blink 0.7s infinite;
   opacity: 1;
   color: #ccc;
-  /* Cursor color */
 }
 
 #copyright {
@@ -93,7 +64,6 @@ body {
   }
 }
 
-/* Hide cursor when not typing/backspacing */
 #typing-text.paused::after {
   opacity: 0;
   animation: none;

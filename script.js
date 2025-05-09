@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   'Cute Font',
   'DotGothic16',
   'Doto',
-  'Faster One',
+  //   'Faster One',
   'Hachi Maru Pop',
   'Jersey 10',
   'Jolly Lodger',
